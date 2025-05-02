@@ -8,7 +8,7 @@ from io import BytesIO
 import os
 
 # ✅ Google Gemini API setup (replace with your key securely)
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+ genai.configure(api_key="AIzaSyCMjUSPrycsWJfDYg7BNKr6dSyk3Gtt0J8")
 model = genai.GenerativeModel(model_name="models/gemini-1.5-flash-latest")
 
 # ✅ Category and template mappings
