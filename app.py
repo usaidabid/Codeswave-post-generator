@@ -3,7 +3,8 @@ from PIL import Image, ImageDraw, ImageFont
 import google.generativeai as genai
 import random
 import time
-
+import requests
+from io import BytesIO
 
 # Google Gemini API setup
 genai.configure(api_key="AIzaSyCMjUSPrycsWJfDYg7BNKr6dSyk3Gtt0J8")
@@ -57,11 +58,12 @@ if st.button("Generate Post"):
         selected_template_path, text_color = template_map[matched_category]
     else:
         selected_template_path, text_color = default_template_path, default_color
-
+    response = requests.get(selected_template_path)
+    background = Image.open(BytesIO(response.content))
      
 
-    # Step 3: Image generation with PIL
-    background = Image.open(selected_template_path)
+   
+    
     font_path = "arial.ttf"
     font_size = 30
     font = ImageFont.truetype(font_path, font_size)
